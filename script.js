@@ -6,7 +6,7 @@ let isMenuOpen = false;
 function toggleMenu() {
     isMenuOpen = !isMenuOpen;
     navMenu.style.display = isMenuOpen ? 'flex' : 'none';
-    
+
     // Animate hamburger lines
     const spans = hamburger.querySelectorAll('span');
     if (isMenuOpen) {
@@ -56,7 +56,7 @@ let lastScrollY = window.scrollY;
 
 function updateNavbar() {
     const currentScrollY = window.scrollY;
-    
+
     if (currentScrollY > 100) {
         navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
@@ -64,14 +64,14 @@ function updateNavbar() {
         navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         navbar.style.boxShadow = 'none';
     }
-    
+
     // Hide/show navbar on scroll (optional)
     if (currentScrollY > lastScrollY && currentScrollY > 500) {
         navbar.style.transform = 'translateY(-100%)';
     } else {
         navbar.style.transform = 'translateY(0)';
     }
-    
+
     lastScrollY = currentScrollY;
 }
 
@@ -81,13 +81,13 @@ window.addEventListener('scroll', updateNavbar);
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const scrollPos = window.scrollY + 100;
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionBottom = sectionTop + section.offsetHeight;
         const sectionId = section.getAttribute('id');
         const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-        
+
         if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
             // Remove active class from all nav links
             navLinks.forEach(link => link.classList.remove('active'));
@@ -119,7 +119,7 @@ const observer = new IntersectionObserver((entries) => {
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.project-card, .skill-category, .achievement');
-    
+
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.textContent = '';
-    
+
     function type() {
         if (i < text.length) {
             element.textContent += text.charAt(i);
@@ -140,7 +140,7 @@ function typeWriter(element, text, speed = 100) {
             setTimeout(type, speed);
         }
     }
-    
+
     type();
 }
 
@@ -148,62 +148,22 @@ function typeWriter(element, text, speed = 100) {
 window.addEventListener('load', () => {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     if (heroSubtitle) {
-        const originalText = heroSubtitle.textContent;
+        const originalText = 'Backend Engineer | Fintech Specialist';
         setTimeout(() => {
-            typeWriter(heroSubtitle, originalText, 150);
+            typeWriter(heroSubtitle, originalText, 100);
         }, 1000);
     }
 });
-
-// Counter animation for stats
-function animateCounter(element, start, end, duration) {
-    let current = start;
-    const increment = (end - start) / (duration / 16);
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= end) {
-            current = end;
-            clearInterval(timer);
-        }
-        element.textContent = Math.floor(current) + '+';
-    }, 16);
-}
-
-// Animate counters when stats section comes into view
-const statsSection = document.querySelector('.hero-stats');
-if (statsSection) {
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumbers = document.querySelectorAll('.stat-number');
-                
-                statNumbers.forEach((stat, index) => {
-                    const text = stat.textContent;
-                    const number = parseInt(text);
-                    
-                    setTimeout(() => {
-                        animateCounter(stat, 0, number, 2000);
-                    }, index * 200);
-                });
-                
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    statsObserver.observe(statsSection);
-}
 
 // Add hover effects to project cards
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(card => {
     card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
+        this.style.transform = 'translateY(-4px)';
     });
-    
+
     card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
+        this.style.transform = 'translateY(0)';
     });
 });
 
@@ -217,7 +177,7 @@ buttons.forEach(button => {
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.cssText = `
             position: absolute;
             border-radius: 50%;
@@ -230,11 +190,11 @@ buttons.forEach(button => {
             top: ${y}px;
             pointer-events: none;
         `;
-        
+
         this.style.position = 'relative';
         this.style.overflow = 'hidden';
         this.appendChild(ripple);
-        
+
         setTimeout(() => {
             ripple.remove();
         }, 600);
@@ -250,15 +210,15 @@ style.textContent = `
             opacity: 0;
         }
     }
-    
+
     .nav-link.active {
         color: var(--primary-color);
     }
-    
+
     .nav-link.active::after {
         width: 100%;
     }
-    
+
     @media (max-width: 768px) {
         .nav-menu {
             position: absolute;
@@ -271,7 +231,7 @@ style.textContent = `
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border-top: 1px solid var(--border);
         }
-        
+
         .nav-menu.active {
             display: flex;
         }
@@ -292,7 +252,7 @@ externalLinks.forEach(link => {
     link.addEventListener('click', function() {
         const originalText = this.innerHTML;
         this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
-        
+
         setTimeout(() => {
             this.innerHTML = originalText;
         }, 1000);
@@ -304,7 +264,7 @@ function preloadImages() {
     const images = [
         // Add any image paths here when images are added
     ];
-    
+
     images.forEach(src => {
         const img = new Image();
         img.src = src;
@@ -315,7 +275,7 @@ function preloadImages() {
 document.addEventListener('DOMContentLoaded', () => {
     preloadImages();
     updateActiveNavLink();
-    
+
     // Add smooth reveal animation to sections
     const sections = document.querySelectorAll('.section');
     sections.forEach((section, index) => {
@@ -332,7 +292,7 @@ window.addEventListener('resize', () => {
         if (window.innerWidth > 768 && isMenuOpen) {
             toggleMenu();
         }
-        
+
         // Recalculate positions
         updateActiveNavLink();
     }, 250);
@@ -344,12 +304,12 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isMenuOpen) {
         toggleMenu();
     }
-    
+
     // Navigate sections with arrow keys (when focused on nav)
     if (e.target.classList.contains('nav-link')) {
         const navLinksArray = Array.from(navLinks);
         const currentIndex = navLinksArray.indexOf(e.target);
-        
+
         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
             e.preventDefault();
             const nextIndex = (currentIndex + 1) % navLinksArray.length;
