@@ -1,3 +1,9 @@
+// Footer copyright year
+const copyrightYear = document.getElementById('copyright-year');
+if (copyrightYear) {
+    copyrightYear.textContent = new Date().getFullYear();
+}
+
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -58,10 +64,10 @@ function updateNavbar() {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.background = 'rgba(11, 18, 32, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.4)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(11, 18, 32, 0.85)';
         navbar.style.boxShadow = 'none';
     }
 
@@ -128,33 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Typing effect for hero subtitle
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.textContent = '';
-
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-
-    type();
-}
-
-// Initialize typing effect when page loads
-window.addEventListener('load', () => {
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    if (heroSubtitle) {
-        const originalText = 'Backend Engineer | Fintech Specialist';
-        setTimeout(() => {
-            typeWriter(heroSubtitle, originalText, 100);
-        }, 1000);
-    }
-});
-
 // Add hover effects to project cards
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(card => {
@@ -167,50 +146,9 @@ projectCards.forEach(card => {
     });
 });
 
-// Add click effects to buttons
-const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
-buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-        // Create ripple effect
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-
-        ripple.style.cssText = `
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-            width: ${size}px;
-            height: ${size}px;
-            left: ${x}px;
-            top: ${y}px;
-            pointer-events: none;
-        `;
-
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
-        this.appendChild(ripple);
-
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
-
-// Add ripple animation CSS
+// Add active nav link / mobile menu styles
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes ripple {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-
     .nav-link.active {
         color: var(--primary-color);
     }
@@ -225,10 +163,10 @@ style.textContent = `
             top: 100%;
             left: 0;
             right: 0;
-            background: white;
+            background: var(--background);
             flex-direction: column;
             padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             border-top: 1px solid var(--border);
         }
 
@@ -245,19 +183,6 @@ function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
 }
-
-// Add loading states for external links
-const externalLinks = document.querySelectorAll('a[target="_blank"]');
-externalLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        const originalText = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
-
-        setTimeout(() => {
-            this.innerHTML = originalText;
-        }, 1000);
-    });
-});
 
 // Preload images for better performance
 function preloadImages() {
@@ -321,13 +246,3 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
-
-// Performance monitoring
-if ('performance' in window) {
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const perfData = performance.getEntriesByType('navigation')[0];
-            console.log(`Page load time: ${perfData.loadEventEnd - perfData.loadEventStart}ms`);
-        }, 0);
-    });
-}
