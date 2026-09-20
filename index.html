@@ -56,8 +56,8 @@
                     <p>
                         My work spans payment gateway integrations (Providus Bank, BankOne, Flutterwave, Clear Junction),
                         KYC/AML compliance pipelines (Smile Identity, BVN validation, credit bureaus), government payroll systems (IPPIS),
-                        and multi-role approval workflows alongside enterprise platforms for event management, real-time collaboration, and business operations.
-                        On select projects, I also own the full DevOps lifecycle - CI/CD pipelines, containerized deployments, and production observability.
+                        and multi-role approval workflows alongside enterprise and mobility platforms for event management, ride-hailing, and business operations, with real-time tracking and notifications.
+                        On select projects, I also own the full DevOps lifecycle - automated CI/CD release pipelines, containerized deployments, and production observability.
                     </p>
                     <div class="achievements">
                         <div class="achievement">
@@ -94,6 +94,7 @@
                     <div class="skill-tags">
                         <span class="skill-tag">TypeScript</span>
                         <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">C#</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -102,6 +103,8 @@
                         <span class="skill-tag">NestJS</span>
                         <span class="skill-tag">Express.js</span>
                         <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">ASP.NET Core</span>
+                        <span class="skill-tag">SignalR</span>
                         <span class="skill-tag">React</span>
                         <span class="skill-tag">Vue 3</span>
                     </div>
@@ -115,6 +118,7 @@
                         <span class="skill-tag">TypeORM</span>
                         <span class="skill-tag">Sequelize</span>
                         <span class="skill-tag">Prisma</span>
+                        <span class="skill-tag">Entity Framework Core</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -124,7 +128,6 @@
                         <span class="skill-tag">Providus Bank</span>
                         <span class="skill-tag">BankOne</span>
                         <span class="skill-tag">Clear Junction</span>
-                        <span class="skill-tag">FundsFlow</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -143,10 +146,13 @@
                         <span class="skill-tag">Docker</span>
                         <span class="skill-tag">CapRover</span>
                         <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">release-please</span>
+                        <span class="skill-tag">Contabo</span>
                         <span class="skill-tag">Cloudflare</span>
                         <span class="skill-tag">Prometheus</span>
                         <span class="skill-tag">Loki</span>
                         <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">Serilog</span>
                         <span class="skill-tag">Redis</span>
                         <span class="skill-tag">BullMQ</span>
                         <span class="skill-tag">AWS S3</span>
@@ -160,6 +166,13 @@
                         <span class="skill-tag">JWT/RBAC</span>
                         <span class="skill-tag">WebSockets</span>
                         <span class="skill-tag">Event-Driven Architecture</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Third-Party APIs</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Twilio</span>
+                        <span class="skill-tag">Mapbox</span>
                     </div>
                 </div>
             </div>
@@ -298,6 +311,51 @@
                     </div>
                     <div class="project-impact">
                         <strong>Impact:</strong> Replaced a fully manual, paper-based operation across multiple branches - consolidating inventory, sales, and client debt tracking into a single real-time platform, cutting reporting time from days to seconds.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Kave</h3>
+                        <div class="project-type">Ride-Hailing / Mobility</div>
+                        <div class="project-live-badge">Live</div>
+                    </div>
+                    <p class="project-description">
+                        Backend and infrastructure for a ride-hailing platform connecting riders and drivers across trip booking, real-time tracking, and safety features. Took over and stabilized the backend mid-flight - closing critical reliability gaps, standing up a professional deployment pipeline, and hardening authentication and third-party integrations across staging and production.
+                    </p>
+                    <div class="project-role">
+                        <strong>Role:</strong> Lead Backend Engineer · Sole DevOps Engineer
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">ASP.NET Core (C#)</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Entity Framework Core</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">SignalR</span>
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">Twilio</span>
+                        <span class="tech-tag">Mapbox</span>
+                        <span class="tech-tag">Cloudinary</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">CapRover</span>
+                        <span class="tech-tag">Contabo</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">release-please</span>
+                        <span class="tech-tag">Prometheus</span>
+                        <span class="tech-tag">Serilog</span>
+                    </div>
+                    <div class="project-features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> Automated CI/CD pipeline (GitHub Actions + release-please) deploying to staging and production on CapRover, with Conventional Commits driving versioned releases</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Diagnosed and fixed production-blocking dependency-injection crashes that silently took down login and registration across every environment</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Stood up and hardened staging and production infrastructure end-to-end - databases, caching, scoped secrets, HTTPS, and per-app deployment tokens</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Migrated production data into a new staging environment, resolving schema drift between ad-hoc SQL patches and the EF Core migration history</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Twilio (OTP and emergency SMS) and Mapbox (live driving ETA) integrations designed to degrade gracefully instead of crashing unrelated features</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> JWT authentication issued from both phone/OTP and email/password login, with consistent role-based access across the API</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Reviewed, ported, and end-to-end tested an emergency-alert (SOS) feature - incident lifecycle, live location tracking, and database-level race protection</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> Replaced hand-written SQL migrations with reproducible EF Core migrations integrated into the automated deploy pipeline</div>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Stabilized a mid-flight backend into a reliably deployable system, closing crash-prone authentication gaps, replacing ad-hoc manual deploys with an auditable release pipeline, and validating a teammate's feature before production sign-off.
                     </div>
                 </div>
 
